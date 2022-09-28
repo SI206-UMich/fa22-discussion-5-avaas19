@@ -27,7 +27,7 @@ class Item:
 class Warehouse:
 
 	# Constructor
-	def __init__(self, items):
+	def __init__(self, items = []):
 		self.items = items[:]
 
 	# Prints all the items in the warehouse, one on each line.	
@@ -37,13 +37,13 @@ class Warehouse:
 			print("\n")	
 
 	# Adds an item to the warehouse	
-	def add_item(self):
-		self.items.append()
+	def add_item(self, item):
+		self.items.append(item)
 
 
 	# Returns the item in the warehouse with the most stock		
 	def get_max_stock(self):
-		pass
+		
 	
 	# Returns the item in the warehouse with the highest price
 	def get_max_price(self):
@@ -69,10 +69,14 @@ class TestAllMethods(unittest.TestCase):
 
 	## Check to see whether you can add an item to the warehouse
 	def test_add_item(self):
-		w = Warehouse
+		w = Warehouse()
+		self.assertEqual(len(w.items), 0, "Testing length of items list")
 		w.add_item(self.item1)
 		w.add_item(self.item2)
-		self.assertEqual(len(w.self.items), 2, "Testing length of items list")
+		self.assertEqual(len(w.items), 2, "Testing length of items list")
+		w.add_item(self.item3)
+		w.add_item(self.item4)
+		self.assertEqual(len(w.items), 4, "Testing length of items list")
 
 
 
